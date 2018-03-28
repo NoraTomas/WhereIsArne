@@ -7,6 +7,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class FindArne extends ApplicationAdapter {
+	public static final int WIDTH = 730;
+	public static final int HEIGHT = 730;
+	public static final String TITLE = "Where is Arne";
+
 	SpriteBatch batch;
 	Texture img;
 	

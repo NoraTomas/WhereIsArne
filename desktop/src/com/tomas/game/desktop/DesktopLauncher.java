@@ -7,6 +7,9 @@ import com.tomas.game.FindArne;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.title = FindArne.TITLE;
+		config.width = FindArne.WIDTH;
+		config.height = FindArne.HEIGHT;
 		new LwjglApplication(new FindArne(), config);
 	}
 }
