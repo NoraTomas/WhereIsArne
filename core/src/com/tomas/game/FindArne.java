@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import states.GameStateManager;
+import states.PlayState;
+
 public class FindArne extends ApplicationAdapter {
 	public static final int WIDTH = 730;
 	public static final int HEIGHT = 730;
@@ -13,11 +16,14 @@ public class FindArne extends ApplicationAdapter {
 
 	SpriteBatch batch;
 	Texture img;
+	private GameStateManager gsm;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
+		gsm = new GameStateManager();
+		gsm.push(new PlayState(gsm));
 	}
 
 	@Override
