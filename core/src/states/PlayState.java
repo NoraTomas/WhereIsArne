@@ -15,6 +15,7 @@ public class PlayState extends State {
     public PlayState(GameStateManager gsm) {
         super(gsm);
         blueBackground = new Texture("blueBackground.jpg");
+        person = new Person();
 
 
     }
