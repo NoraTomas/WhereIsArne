@@ -6,15 +6,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import com.tomas.game.FindArne;
 
+import sprites.BtnUnpressed;
+
 public class MenuState extends State {
 
     private Texture background;
-    private Texture playbtn;
+    private BtnUnpressed btnUnpressed;
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
-        //background = new Texture("bg.png");
-        //playbtn = new Texture("playbtn.png");
+        background = new Texture("menuBG.png");
+        btnUnpressed = new BtnUnpressed();
     }
 
     @Override
@@ -26,23 +28,24 @@ public class MenuState extends State {
     }
 
     private boolean touchWithinButtonBordersX() {
-        int playbtnStarXtCoordinate = FindArne.WIDTH/2 - playbtn.getWidth()/2;
-        int playbtnEndXCoordinate = (FindArne.WIDTH/2 - playbtn.getWidth()/2)
-                + playbtn.getWidth();
+        float leftX = btnUnpressed.getPositionX();
+        float rightX = btnUnpressed.getPositionX() + btnUnpressed.getBtnImg().getWidth();
 
-        if (Gdx.input.getX() > playbtnStarXtCoordinate &&
-                Gdx.input.getX() < playbtnEndXCoordinate){
+        if (Gdx.input.getX() > leftX && Gdx.input.getX() < rightX){
             return true;
         }
         return false;
     }
 
     private boolean touchWithinButtonBordersY(){
-        int playbtnStarYtCoordinate = 288;
-        int playbtnEndYtCoordinate = 234;
+        //Y-coordinate of textures are high low in the image, and low high in the image
+        float lowYInverted = btnUnpressed.getPositionY();
+        float highYInverted = btnUnpressed.getPositionY() + btnUnpressed.getBtnImg().getHeight();
 
-        if(Gdx.input.getY() < playbtnStarYtCoordinate &&
-                Gdx.input.getY() > playbtnEndYtCoordinate){
+        float highY = FindArne.HEIGHT - lowYInverted;
+        float lowY = FindArne.HEIGHT - highYInverted;
+
+        if(Gdx.input.getY() > lowY && Gdx.input.getY() < highY){
             return true;
         }
         return false;
@@ -56,15 +59,16 @@ public class MenuState extends State {
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
-        //sb.draw(background, 0, 0, FindArne.WIDTH, FindArne.HEIGHT);
-        //sb.draw(playbtn, FindArne.WIDTH/2 - playbtn.getWidth()/2, FindArne.HEIGHT/2);
+        sb.draw(background, 0, 0, FindArne.WIDTH, FindArne.HEIGHT);
+        sb.draw(btnUnpressed.getBtnImg(), btnUnpressed.getPositionX(),
+                btnUnpressed.getPositionY());
         sb.end();
     }
 
     @Override
     public void dispose() {
         background.dispose();
-        playbtn.dispose();
+        btnUnpressed.getBtnImg().dispose();
     }
 }
 

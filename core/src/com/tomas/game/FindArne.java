@@ -23,7 +23,7 @@ public class FindArne extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		gsm = new GameStateManager();
-		gsm.push(new PlayState(gsm));
+		gsm.push(new MenuState(gsm));
 	}
 
 	@Override
