@@ -7,9 +7,9 @@ public class Person {
     private Vector3 position;
     private Texture personImg;
 
-    public Person(){
+    public Person(float xCoordinate, float yCoordinate){
         personImg = new Texture("person.png");
-        position = new Vector3(20, 20, 0);
+        position = new Vector3(xCoordinate, yCoordinate, 0);
     }
 
     public float getXCoordinate(){
