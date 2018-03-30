@@ -5,17 +5,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.tomas.game.FindArne;
 
 import java.util.ArrayList;
+
+import sprites.Arne;
 import sprites.Person;
 
 public class PlayState extends State {
 
     private Texture blueBackground;
     private ArrayList<Person> persons;
+    private Arne arne;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
         blueBackground = new Texture("blueBackground.jpg");
         persons = new ArrayList<Person>();
+        arne = new Arne();
 
         for(int i=0; i < 100; i++){
             persons.add(new Person());
@@ -44,6 +48,7 @@ public class PlayState extends State {
         for(Person person : persons){
             sb.draw(person.getPersonImg(), person.getXCoordinate(), person.getYCoordinate());
         }
+        sb.draw(arne.getPersonImg(), arne.getXCoordinate(), arne.getYCoordinate());
         sb.end();
     }
 
