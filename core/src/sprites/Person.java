@@ -3,8 +3,6 @@ package sprites;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector3;
 import com.tomas.game.FindArne;
-
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Person {
@@ -12,14 +10,12 @@ public class Person {
     private Texture personImg;
 
 
-    public Person(float xCoordinate, float yCoordinate){
+    public Person(){
         personImg = new Texture("person.png");
-        position = new Vector3(xCoordinate, yCoordinate, 0);
+        position = new Vector3(createXCoordinates(), createYCoordinate(), 0);
 
-
-        createXCoordinates();
-        createYCoordinate();
     }
+
 
     public float createXCoordinates(){
         Random random = new Random();
