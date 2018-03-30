@@ -15,6 +15,7 @@ public class PlayState extends State {
     private Texture blueBackground;
     private ArrayList<Person> persons;
     private Arne arne;
+    private long startTime;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -26,9 +27,7 @@ public class PlayState extends State {
             persons.add(new Person());
         }
 
-
-
-
+        startTime = System.currentTimeMillis();
     }
 
     @Override
@@ -41,7 +40,15 @@ public class PlayState extends State {
         if(Gdx.input.justTouched() && hasClickedOnArne()){
             gsm.push(new WinState(gsm));
         }
+
+        keepTrackOfTime();
+
+        float time = 0;
+        time += Gdx.graphics.getDeltaTime();
+        long timePassedInSeconds = (System.currentTimeMillis() - startTime);
+
     }
+
 
     private boolean hasClickedOnArne() {
         if(hasClickedBetweenXCoordinates() && hasClickedBetweenYCoordinates()){
@@ -74,6 +81,12 @@ public class PlayState extends State {
             return true;
         }
         return false;
+    }
+
+
+    private void keepTrackOfTime() {
+        float startTime = System.currentTimeMillis();
+
     }
 
     @Override
