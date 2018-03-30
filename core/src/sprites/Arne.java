@@ -36,7 +36,7 @@ public class Arne {
         return position.y;
     }
 
-    public Texture getPersonImg(){
+    public Texture getArneImg(){
         return arneImg;
     }
 }

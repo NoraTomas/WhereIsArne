@@ -1,5 +1,6 @@
 package states;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.tomas.game.FindArne;
@@ -37,7 +38,42 @@ public class PlayState extends State {
 
     @Override
     public void update(float dt) {
+        if(Gdx.input.justTouched() && hasClickedOnArne()){
+            gsm.push(new WinState(gsm));
+        }
+    }
 
+    private boolean hasClickedOnArne() {
+        if(hasClickedBetweenXCoordinates() && hasClickedBetweenYCoordinates()){
+            return true;
+        }
+
+        return false;
+    }
+
+
+
+    private boolean hasClickedBetweenXCoordinates() {
+        float leftX = arne.getXCoordinate();
+        float rightX = arne.getXCoordinate() + arne.getArneImg().getWidth();
+
+        if(Gdx.input.getX() > leftX && Gdx.input.getX() < rightX){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean hasClickedBetweenYCoordinates() {
+        float lowYInverted = arne.getYCoordinate();
+        float highYInverted = arne.getYCoordinate() + arne.getArneImg().getHeight();
+
+        float highY = FindArne.HEIGHT - lowYInverted;
+        float lowY = FindArne.HEIGHT - highYInverted;
+
+        if(Gdx.input.getY() > lowY && Gdx.input.getY() < highY){
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -48,7 +84,7 @@ public class PlayState extends State {
         for(Person person : persons){
             sb.draw(person.getPersonImg(), person.getXCoordinate(), person.getYCoordinate());
         }
-        sb.draw(arne.getPersonImg(), arne.getXCoordinate(), arne.getYCoordinate());
+        sb.draw(arne.getArneImg(), arne.getXCoordinate(), arne.getYCoordinate());
         sb.end();
     }
 
