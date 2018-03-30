@@ -16,6 +16,7 @@ public class PlayState extends State {
     private ArrayList<Person> persons;
     private Arne arne;
     private long startTime;
+    public static long TIME_PASSED_IN_SECONDS;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -41,11 +42,7 @@ public class PlayState extends State {
             gsm.push(new WinState(gsm));
         }
 
-        keepTrackOfTime();
-
-        float time = 0;
-        time += Gdx.graphics.getDeltaTime();
-        long timePassedInSeconds = (System.currentTimeMillis() - startTime);
+        TIME_PASSED_IN_SECONDS = (System.currentTimeMillis() - startTime);
 
     }
 
@@ -81,12 +78,6 @@ public class PlayState extends State {
             return true;
         }
         return false;
-    }
-
-
-    private void keepTrackOfTime() {
-        float startTime = System.currentTimeMillis();
-
     }
 
     @Override
