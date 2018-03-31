@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import com.tomas.game.FindArne;
 
+import java.util.Random;
+
 import sprites.Btn;
 
 public class MenuState extends State {
@@ -65,6 +67,11 @@ public class MenuState extends State {
     @Override
     public void update(float dt) {
         handleInput();
+
+        Random random = new Random();
+
+        int randomNumber = Math.round(random.nextInt(10) + 1);
+        System.out.println("The random numbers are: " + randomNumber);
     }
 
     @Override

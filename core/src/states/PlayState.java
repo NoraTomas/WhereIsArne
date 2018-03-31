@@ -20,11 +20,11 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
-        blueBackground = new Texture("blueBackground.jpg");
+        blueBackground = new Texture("bg.png");
         persons = new ArrayList<Person>();
         arne = new Arne();
 
-        for(int i=0; i < 100; i++){
+        for(int i=0; i < 200; i++){
             persons.add(new Person());
         }
 
@@ -86,8 +86,9 @@ public class PlayState extends State {
         sb.draw(blueBackground, 0, 0, FindArne.WIDTH, FindArne.HEIGHT);
 
         for(Person person : persons){
-            sb.draw(person.getPersonImg(), person.getXCoordinate(), person.getYCoordinate());
+            sb.draw(person.getCurrentPersonImg(), person.getXCoordinate(), person.getYCoordinate());
         }
+        
         sb.draw(arne.getArneImg(), arne.getXCoordinate(), arne.getYCoordinate());
         sb.end();
     }
