@@ -83,13 +83,22 @@ public class Person {
     public float createXCoordinates(){
         Random random = new Random();
         float randomXCoordinate = random.nextFloat() * (FindArne.WIDTH);
-        return randomXCoordinate;
+
+        if(randomXCoordinate < personImg1.getWidth()){
+            return personImg1.getWidth();
+        }
+
+        else return randomXCoordinate - personImg1.getWidth();
     }
 
     public float createYCoordinate(){
         Random random = new Random();
         float randomYCoordinate = random.nextFloat() * (FindArne.WIDTH);
-        return randomYCoordinate;
+        if(randomYCoordinate > FindArne.HEIGHT - personImg1.getHeight()){
+            return FindArne.HEIGHT - personImg1.getHeight();
+        }
+
+        else return randomYCoordinate;
     }
 
     public float getXCoordinate(){

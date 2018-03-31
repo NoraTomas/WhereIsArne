@@ -88,7 +88,7 @@ public class PlayState extends State {
         for(Person person : persons){
             sb.draw(person.getCurrentPersonImg(), person.getXCoordinate(), person.getYCoordinate());
         }
-        
+
         sb.draw(arne.getArneImg(), arne.getXCoordinate(), arne.getYCoordinate());
         sb.end();
     }
